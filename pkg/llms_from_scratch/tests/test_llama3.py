@@ -240,10 +240,10 @@ def test_model_variants(ModelClass, generate_fn, llama3_weights_path):
         context_size=LLAMA32_CONFIG_1B["context_length"]
     )
     print("Encoded output text:", out)
-    # Verify output shape is correct (input length + max_new_tokens)
-    assert out.shape == (1, encoded_tensor.shape[1] + 5)
-    # Verify input prefix is preserved
-    assert torch.equal(out[0, :encoded_tensor.shape[1]], encoded_tensor[0])
+    expect = torch.tensor([
+        [43, 2543, 292, 4483, 100383, 8113, 76873, 42175, 72641]
+    ])
+    assert torch.equal(expect, out)
 
 
 def test_rmsnorm_equivalence():

@@ -329,10 +329,12 @@ def test_model_variants(ModelClass, qwen3_weights_path, generate_fn):
         context_size=QWEN_CONFIG_06_B["context_length"]
     )
     print("Encoded output text:", out)
-    # Verify output shape is correct (input length + max_new_tokens)
-    assert out.shape == (1, input_token_ids.shape[1] + 5)
-    # Verify input prefix is preserved
-    assert torch.equal(out[0, :input_token_ids.shape[1]], input_token_ids[0])
+    expect = torch.tensor([
+        [151644, 872, 198, 35127, 752, 264, 2805, 16800, 311,
+         3460, 4128,  4119, 13, 151645, 198, 112120, 83942, 60483,
+         102652, 7414]
+    ])
+    assert torch.equal(expect, out)
 
 
 def test_model_KV_noKV():
