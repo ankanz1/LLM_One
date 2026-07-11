@@ -5,7 +5,6 @@ This repository contains the code for developing, pretraining, and finetuning a 
 <br>
 <br>
 
-<a href="https://amzn.to/4fqvn0D"><img src="https://sebastianraschka.com/images/LLMs-from-scratch-images/cover.jpg?123" width="250px"></a>
 
 <br>
 
